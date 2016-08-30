@@ -32,8 +32,6 @@ public class HomeController {
 	@RequestMapping("/")
 	String home(Model model) {
 		
-		model.addAttribute("servidorOauth2", servidorAuth);
-		
 		String username = restTemplate.getForObject(messagesUrl + "/user", String.class);
 		model.addAttribute("userlogado", username);
 		
@@ -41,6 +39,7 @@ public class HomeController {
 		model.addAttribute("messages", messages);
 		return "index";
 	}
+	
 
 	@RequestMapping(path = "messages", method = RequestMethod.POST)
 	String postMessages(@RequestParam String text) {
@@ -51,4 +50,19 @@ public class HomeController {
 				.body(message), Message.class);
 		return "redirect:/";
 	}
+	
+	/*@RequestMapping(value = "/signout", method = RequestMethod.GET)
+	public String signOut(HttpServletRequest request, HttpServletResponse response) {
+		
+	    new SecurityContextLogoutHandler().logout(request, response, null);
+	    new CookieClearingLogoutHandler(AbstractRememberMeServices.SPRING_SECURITY_REMEMBER_ME_COOKIE_KEY).logout(request, response, null);
+		
+		restTemplate.exchange(
+				RequestEntity
+					.post(UriComponentsBuilder.fromHttpUrl(servidorAuth).pathSegment("logout").build().toUri())
+					.body(""), 
+					String.class);
+	    
+	    return "redirect:/";
+	}*/	
 }

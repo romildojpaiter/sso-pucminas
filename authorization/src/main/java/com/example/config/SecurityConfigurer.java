@@ -8,14 +8,17 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @Order(-20)
-public class LoginConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
     public void globalUserDetails(final AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication()
+			.withUser("user").password("password").roles("USER")
+			.and()
 			.withUser("john").password("123").roles("USER")
 			.and()
 			.withUser("tom").password("111").roles("ADMIN");
@@ -41,11 +44,12 @@ public class LoginConfig extends WebSecurityConfigurerAdapter {
         http
 	        .formLogin().loginPage("/login").permitAll()
 	        .and()
-	        .requestMatchers()
-	        .antMatchers("/", "/login", "/oauth/authorize", "/oauth/confirm_access")
-	        .and()
-	        .authorizeRequests()
-	        .anyRequest().authenticated();
+		        .requestMatchers()
+		        .antMatchers("/", "/login", "/oauth/authorize", "/oauth/confirm_access")
+		        .and()
+		        .authorizeRequests()
+		        .anyRequest().authenticated();
+        
     }
 	
 }

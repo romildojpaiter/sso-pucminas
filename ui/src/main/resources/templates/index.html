@@ -4,7 +4,20 @@
     <meta charset="UTF-8"/>
     <title>OAuth2 SSO Demo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.26.3/css/uikit.gradient.min.css"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    
+    <script th:inline="javascript">
+	/*<![CDATA[*/
+		
+		$( "#target" ).click(function() {
+				  alert( "Handler for .click() called." );
+		});
+	
+	/*]]>*/
+	</script>
 </head>
+
+
 
 <body>
 
@@ -12,7 +25,7 @@
 	<div class="uk-navbar-flip">
 	    <ul class="uk-navbar-nav">
 	        <li class="uk-active"><a href="#"><span th:text="${userlogado}">user.name</span></a></li>	        
-	        <li class="uk-parent"><a th:href="${servidorOauth2 + '/logout'}">Sair</a></li>
+	        <li class="uk-parent"><a th:href="@{/logout}">Sair</a></li>
 	    </ul>
     </div>
 </nav>
