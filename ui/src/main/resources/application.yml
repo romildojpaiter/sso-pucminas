@@ -1,24 +1,32 @@
-auth-server: http://localhost:9999/uaa
+debug:
 server:
-  port: 8080
+  port: 7080
+  contextPath: /app
 security:
-  basic:
-    enabled: false
+  user:
+    password: none
+zuul:
+  routes:
+    resource:
+      path: /resource/**
+      url: http://localhost:8080/resource-service/
+    user:
+      path: /user/**
+      url: http://localhost:8080/resource-service/user
+spring:
   oauth2:
+    sso:
+      home:
+        secure: false
+        path: /,/**/*.html
     client:
-      client-id: demo
-      client-secret: demo
-      access-token-uri: ${auth-server}/oauth/token
-      user-authorization-uri: ${auth-server}/oauth/authorize
+      accessTokenUri: http://localhost:9080/uaa/oauth/token
+      userAuthorizationUri: http://localhost:9080/uaa/oauth/authorize
+      clientId: soncui
+      clientSecret: soncui
       scope: read, write
     resource:
-      jwt:
-        key-uri: ${auth-server}/oauth/token_key
+      userInfoUri: http://localhost:8080/resource-service/user
 logging:
   level:
     org.springframework.security: DEBUG
-spring:
-  jackson:
-    date-format: com.fasterxml.jackson.databind.util.ISO8601DateFormat
-
-

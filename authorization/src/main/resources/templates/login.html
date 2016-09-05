@@ -1,40 +1,70 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" class="uk-height-1-1">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
-    <title>OAuth2 SSO Demo</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.26.3/css/uikit.gradient.min.css"/>
+<meta charset="utf-8" />
+<title>Sample - SignIn</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/bootstrap-3.1.1.min.js"></script>
+
+<style type="text/css"></style>
+<link href="css/bootstrap-3.1.1/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 
-<body class="uk-height-1-1">
+<body style="background-color: #f7f7f7">
+	<div class="container">
+		<div id="loginbox" style="margin-top: 50px;"
+			class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<div class="panel-title">Sign In</div>
+					<div
+						style="float: right; font-size: 80%; position: relative; top: -20px">
+					</div>
+				</div>
 
-<div class="uk-vertical-align uk-text-center uk-height-1-1">
-    <div class="uk-vertical-align-middle" style="width: 250px;">
-        <h1>Login Form</h1>
+				<div style="padding-top: 30px;" class="panel-body">
 
-        <p class="uk-text-danger" th:if="${param.error}">
-            Login failed ...
-        </p>
+					<div style="display: none" id="login-alert" class="alert alert-danger col-sm-12">
+					</div>
+					<p th:if="${param.logout}" class="alert alert-success">You have been logged out</p>
+					<p th:if="${param.error}" class="alert alert-danger">There was an error, please try again</p>
+					
+					<form id="loginform" class="form-horizontal" role="form" action="login" method="POST">
 
-        <p class="uk-text-success" th:if="${param.logout}">
-            Logout succeeded.
-        </p>
+						<div style="margin-bottom: 25px" class="input-group">
+							<span class="input-group-addon">
+							<i class="glyphicon glyphicon-user"></i></span> 
+							<input id="login-username"
+								type="text" class="form-control" name="username" 
+								placeholder="username or email" required="required" autofocus="autofocus" />
 
-        <form class="uk-panel uk-panel-box uk-form" method="post" th:action="@{/login}">
-            <div class="uk-form-row">
-                <input class="uk-width-1-1 uk-form-large" type="text" placeholder="Username" name="username"
-                       value="user"/>
-            </div>
-            <div class="uk-form-row">
-                <input class="uk-width-1-1 uk-form-large" type="password" placeholder="Password" name="password"
-                       value="password"/>
-            </div>
-            <div class="uk-form-row">
-                <button class="uk-width-1-1 uk-button uk-button-primary uk-button-large">Login</button>
-            </div>
-        </form>
+						</div>
 
-    </div>
-</div>
+						<div style="margin-bottom: 25px" class="input-group">
+							<span class="input-group-addon">
+							<i class="glyphicon glyphicon-lock"></i></span> 
+							<input id="login-password"
+								type="password" class="form-control" name="password" 
+								placeholder="password" required="required" />
+						</div>
+
+						<div style="margin-top: 10px" class="form-group">
+							<!-- Button -->
+							<div class="col-sm-12 controls">
+								<input type="submit" id="login" value="Login" class="btn btn-success" />
+								<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+								<!-- <a id="btn-login" href="#" class="btn btn-success">Login</a> -->
+							</div>
+						</div>
+					</form>
+
+
+
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
