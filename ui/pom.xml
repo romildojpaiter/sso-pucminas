@@ -4,8 +4,7 @@
         xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>rites.sample</groupId>
-    <artifactId>sonc-ng-ui</artifactId>
+    <artifactId>ui-server</artifactId>
     <name>sonc-ng-ui</name>
 
     <parent>
@@ -101,4 +100,5 @@
             </plugin>
         </plugins>
     </build>
+    <groupId>br.com.paiter</groupId>
 </project>
