@@ -4,16 +4,17 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 
+	<groupId>br.com.paiter</groupId>
+	<artifactId>resource-server</artifactId>
+	<name>resource</name>
+	<version>1.0-SNAPSHOT</version>
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.2.1.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-
-	<artifactId>resource-server</artifactId>
-	<version>1.0-SNAPSHOT</version>
-	<name>sonc-resource-server</name>
 
 	<dependencies>
 		<dependency>
@@ -66,5 +67,5 @@
 			</plugin>
 		</plugins>
 	</build>
-	<groupId>br.com.paiter</groupId>
+	
 </project>

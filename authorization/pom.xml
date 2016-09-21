@@ -4,8 +4,10 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 
+	<groupId>br.com.paiter</groupId>
+	<artifactId>authorization-server</artifactId>
+	<name>authorization</name>
 	<version>1.0-SNAPSHOT</version>
-	<name>sonc-auth-server</name>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -92,6 +94,5 @@
 			</plugin>
 		</plugins>
 	</build>
-	<artifactId>authorization</artifactId>
-	<groupId>br.com.paiter</groupId>
+
 </project>

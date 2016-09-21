@@ -4,9 +4,10 @@
 
 	<groupId>br.com.paiter</groupId>
 	<artifactId>sso-tcc-pucminas</artifactId>
+	<name>sso-tcc-pucminas</name>
+	
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>Travalho de conclusão de Curso para PUC Minas</name>
 
 	<modules>
 		<module>authorization</module>
