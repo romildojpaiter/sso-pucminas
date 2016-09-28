@@ -1,0 +1,25 @@
+{
+  "name": "agendamento-ui",
+  "homepage": "https://github.com/romildojpaiter/sso-pucminas",
+  "authors": [
+    "Romildo Jozue Paiter <romildopaiter@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "angular": "^1.5.8",
+    "angular-route": "^1.5.8",
+    "angular-ui-router": "^0.3.1",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.42"
+  }
+}

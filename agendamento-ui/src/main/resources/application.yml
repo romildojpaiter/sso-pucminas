@@ -1,0 +1,34 @@
+debug:
+server:
+  port: 8080
+  contextPath: /agendamento
+security:
+  user:
+    password: none
+zuul:
+  routes:
+    resource:
+      path: /resource/**
+      url: http://localhost:8080/resource-service/
+    user:
+      path: /user/**
+      url: http://localhost:8080/resource-service/user
+spring:
+  oauth2:
+    sso:
+      home:
+        secure: false
+        path: /,/**/*.html,/app/**,/public/**,/assets/**
+    client:
+      accessTokenUri: http://localhost:9080/uaa/oauth/token
+      userAuthorizationUri: http://localhost:9080/uaa/oauth/authorize
+      clientId: soncui
+      clientSecret: soncui
+      scope: read, write
+    resource:
+      userInfoUri: http://localhost:8080/resource-service/user
+    thymeleaf:
+      cache: false
+logging:
+  level:
+    org.springframework.security: INFO
