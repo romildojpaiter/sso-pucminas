@@ -1,10 +1,12 @@
 debug:
 server:
-  port: 8080
+  port: 8181
   contextPath: /agendamento
+
 security:
   user:
     password: none
+
 zuul:
   routes:
     resource:
@@ -13,6 +15,7 @@ zuul:
     user:
       path: /user/**
       url: http://localhost:8080/resource-service/user
+
 spring:
   oauth2:
     sso:
@@ -29,6 +32,3 @@ spring:
       userInfoUri: http://localhost:8080/resource-service/user
     thymeleaf:
       cache: false
-logging:
-  level:
-    org.springframework.security: INFO

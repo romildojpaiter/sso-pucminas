@@ -3,8 +3,8 @@ angular.module('agendamento', [ 'ngRoute' ]).config([ '$routeProvider', '$httpPr
 	$routeProvider.when('/', {
 		templateUrl : 'home.html',
 		controller : 'home'
-	}).when('/public/agendar', {
-		templateUrl : 'public/agendar.html',
+	}).when('/agendar', {
+		templateUrl : 'agendar.html',
 		controller : 'agendar'
 	}).otherwise('/');
 	
@@ -95,12 +95,31 @@ angular.module('agendamento', [ 'ngRoute' ]).config([ '$routeProvider', '$httpPr
 					$scope.greeting = {"id":"Default", "content" : "Error"};
 				});
 	}
+
 }).controller('agendar', function($rootScope, $scope, $http, $q){
 
-	$scope.tab = function(route) {
-		console.log($route.current.controller);
-		return $route.current && route === $route.current.controller;
-	};
+
+	$scope.salvarAgendamento = function() {
+		console.log($rootScope.authenticated);
+		$rootScope.has403 = false;
+		var d = $q.defer();
+		$http.post('resource/agendar', { })
+			.success(function (response) {
+				d.resolve(response);
+			})
+			.error(function () {
+				d.reject();
+			});
+		d.promise.then(
+			function success(response) {
+				$scope.greeting = response;
+				console.log($scope.greeting);
+			},
+			function error(error) {
+				$scope.greeting = {"id":"Default", "content" : "Error"};
+			});
+
+	}
 
 }).run(function ($rootScope) {
 	$rootScope.$on('event:accessDenied', function () {

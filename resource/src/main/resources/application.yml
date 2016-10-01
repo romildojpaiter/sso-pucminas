@@ -12,4 +12,21 @@ auth:
   url: http://localhost:9080/uaa/oauth/check_token/
   clientId: soncrserv
   clientsecret: soncrserv
-  
+
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.99.100:3306/doasoft-resource?autoReconnect=true&useSSL=false
+    username: root
+    password: root
+    testWhileIdle: true
+    timeBetweenEvictionRunsMillis: 60000
+    validationQuery: SELECT 1
+
+  jpa:
+    generate-ddl: true # Initialize the schema on startup.
+    properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+    hibernate.ddl-auto: none
+    show-sql: true
+    format_sql: true
+

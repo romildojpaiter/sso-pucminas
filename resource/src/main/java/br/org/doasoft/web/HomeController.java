@@ -36,4 +36,10 @@ public class HomeController {
 	public String userResource(Principal user) {
 		return "{\"id\":\"" + user.getName() + "\",\"content\":\"Hello World\"}";
 	}
+
+
+	@RequestMapping(value="/agendar", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE})
+	public String agendar(Principal user) {
+		return "{\"id\":\"" + user.getName() + "\",\"content\":\"Hello World\"}";
+	}
 }
