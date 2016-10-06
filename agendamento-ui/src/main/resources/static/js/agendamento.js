@@ -125,7 +125,7 @@ angular.module('agendamento', [ 'ngRoute', 'ngResource', 'ngCookies' ])
             method: 'POST',
             url: 'resource/agendac/',
             headers: {
-                "Content-type": "application/x-www-form-urlencoded; charset=utf-8"
+                "Content-type": "application/json; charset=utf-8"
             },
             data: { nome: 'Romildo Paiter',
                     laboratorio: 'laboratorio teste',

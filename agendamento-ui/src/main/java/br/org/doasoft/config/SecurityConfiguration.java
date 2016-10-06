@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.cloud.security.oauth2.sso.OAuth2SsoConfigurerAdapter;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.csrf.CsrfFilter;
@@ -19,7 +20,7 @@ import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.WebUtils;
 
-// @Configuration
+@Configuration
 public class SecurityConfiguration extends OAuth2SsoConfigurerAdapter {
 
 	@Override
@@ -43,13 +44,12 @@ public class SecurityConfiguration extends OAuth2SsoConfigurerAdapter {
 
 	private Filter csrfHeaderFilter() {
 		return new OncePerRequestFilter() {
+
 			@Override
-			protected void doFilterInternal(HttpServletRequest request,
-					HttpServletResponse response, FilterChain filterChain)
+			protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 					throws ServletException, IOException {
 				
-				CsrfToken csrf = (CsrfToken) request.getAttribute(CsrfToken.class
-						.getName());
+				CsrfToken csrf = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
 				if (csrf != null) {
 					Cookie cookie = WebUtils.getCookie(request, "XSRF-TOKEN");
 					String token = csrf.getToken();
