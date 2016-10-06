@@ -1,4 +1,6 @@
-debug:
+logging:
+  level.org.springframework.security: DEBUG
+
 server:
   port: 8181
   contextPath: /agendamento
@@ -11,17 +13,21 @@ zuul:
   routes:
     resource:
       path: /resource/**
+      sensitiveHeaders: Cookie,Set-Cookie,Authorization
       url: http://localhost:8080/resource-service/
     user:
       path: /user/**
       url: http://localhost:8080/resource-service/user
+  debug:
+    request: true
+  add-proxy-headers: true
 
 spring:
   oauth2:
     sso:
       home:
         secure: false
-        path: /,/**/*.html,/app/**,/public/**,/assets/**
+        path: /,/**/*.html,/app/**,/assets/**
     client:
       accessTokenUri: http://localhost:9080/uaa/oauth/token
       userAuthorizationUri: http://localhost:9080/uaa/oauth/authorize

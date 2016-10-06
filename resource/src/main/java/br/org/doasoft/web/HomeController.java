@@ -38,8 +38,10 @@ public class HomeController {
 	}
 
 
-	@RequestMapping(value="/agendar", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE})
+	@RequestMapping(value="/agendar", method = RequestMethod.GET)
+	@PreAuthorize("hasRole('ROLE_USER')")
 	public String agendar(Principal user) {
-		return "{\"id\":\"" + user.getName() + "\",\"content\":\"Hello World\"}";
+        System.out.println("Passei por aqui");
+        return "{\"id\":\"" + user.getName() + "\",\"content\":\"Hello World\"}";
 	}
 }

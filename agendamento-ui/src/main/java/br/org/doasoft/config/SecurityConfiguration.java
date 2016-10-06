@@ -9,7 +9,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
+import org.springframework.cloud.security.oauth2.sso.OAuth2SsoConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.csrf.CsrfFilter;
@@ -19,9 +19,8 @@ import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.WebUtils;
 
-
-@EnableOAuth2Sso
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+// @Configuration
+public class SecurityConfiguration extends OAuth2SsoConfigurerAdapter {
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
@@ -36,7 +35,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.authenticationEntryPoint(new Http401AuthenticationEntryPoint("Session realm=\"JSESSIONID\""))*/
 			.and()
 				.antMatcher("/**").authorizeRequests()
-				.antMatchers("/index.html", "/home.html", "/", "/login").permitAll().anyRequest()
+				.antMatchers("/index.html", "/home.html", "/", "/login", "/agendar.html").permitAll().anyRequest()
 				.authenticated().and().csrf()
 				.csrfTokenRepository(csrfTokenRepository()).and()
 				.addFilterAfter(csrfHeaderFilter(), CsrfFilter.class);
