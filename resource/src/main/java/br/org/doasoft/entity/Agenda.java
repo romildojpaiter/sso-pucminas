@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * Created by romildopaiter on 9/28/16.
@@ -29,7 +30,7 @@ public class Agenda {
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
     @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
     @NotNull
-    private LocalDateTime date;
+    private Date date;
 
 
     public Long getId() {
@@ -56,11 +57,11 @@ public class Agenda {
         this.laboratorioNome = laboratorioNome;
     }
 
-    public LocalDateTime getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

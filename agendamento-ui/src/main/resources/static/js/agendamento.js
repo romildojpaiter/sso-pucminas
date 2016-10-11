@@ -123,13 +123,13 @@ angular.module('agendamento', [ 'ngRoute', 'ngResource', 'ngCookies' ])
 
         var req = {
             method: 'POST',
-            url: 'resource/agendac/',
+            url: 'resource/agenda/',
             headers: {
                 "Content-type": "application/json; charset=utf-8"
             },
-            data: { nome: 'Romildo Paiter',
-                    laboratorio: 'laboratorio teste',
-                    data: '01-01-2016 00:00:01'
+            data: { doadorNome: 'Romildo Paiter',
+                    laboratorioNome: 'laboratorio teste',
+                    date: '01-01-2016 00:00:01'
             }
         };
 
