@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -26,12 +27,14 @@ public class Agenda {
 
     @NotNull
     private String laboratorioNome;
+    
+    @Transient
+    private String dataDoacao;
 
-    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy hh:mm a")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @NotNull
     private Date date;
-
 
     public Long getId() {
         return id;
@@ -87,5 +90,13 @@ public class Agenda {
 		result = 31 * result + (laboratorioNome != null ? laboratorioNome.hashCode() : 0);
 		result = 31 * result + (date != null ? date.hashCode() : 0);
 		return result;
+	}
+
+	public String getDataDoacao() {
+		return dataDoacao;
+	}
+
+	public void setDataDoacao(String dataDoacao) {
+		this.dataDoacao = dataDoacao;
 	}
 }

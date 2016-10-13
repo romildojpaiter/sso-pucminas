@@ -33,12 +33,12 @@ public class AgendaController {
     public ResponseEntity<Agenda> salvar(Principal user, @RequestBody Agenda agenda){
 
         logger.info("Inserindo um agendamento.");
-
-        System.out.println(agenda.getDoadorNome() + " " + agenda.getLaboratorioNome() + " " + agenda.getDate());
-
-        agendaRepository.save(agenda);
-
-
+        try {
+			agendaRepository.save(agenda);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<Agenda>(agenda, HttpStatus.BAD_REQUEST);
+		}
         return new ResponseEntity<Agenda>(agenda, HttpStatus.OK);
     }
 
