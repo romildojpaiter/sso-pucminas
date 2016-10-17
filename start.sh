@@ -2,7 +2,7 @@
 
 source ~/.bash_profile
 
-mvn clean package
+mvn clean package -Pproducao
 STATUS=$?
 if [ $STATUS -eq 0 ]; then
 echo "Deployment Successful"

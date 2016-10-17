@@ -1,4 +1,4 @@
-# profile: dev
+# profile: producao
 
 server:
   port: 9080

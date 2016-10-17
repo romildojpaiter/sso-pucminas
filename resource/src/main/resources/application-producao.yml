@@ -1,4 +1,4 @@
-# profile: dev
+# profile: producao
 
 server:
  port: 8080
@@ -21,9 +21,9 @@ auth:
 spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.99.100:3306/doasoft-resource?autoReconnect=true&useSSL=false
+    url: jdbc:mysql://localhost:3306/doasoft-resource?autoReconnect=true&useSSL=false
     username: root
-    password: root
+    password: 2ona9ui7
     testWhileIdle: true
     timeBetweenEvictionRunsMillis: 60000
     validationQuery: SELECT 1
