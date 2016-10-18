@@ -6,7 +6,7 @@ server:
 
 oauth2:
  resource:
- userInfoUri: http://localhost:9080/uaa/user
+ userInfoUri: http://174.142.227.104:9080/uaa/user
 
 logging:
  level:
@@ -14,7 +14,7 @@ logging:
 
 auth:
  server:
-  url: http://localhost:9080/uaa/oauth/check_token/
+  url: http://174.142.227.104:9080/uaa/oauth/check_token/
   clientId: soncrserv
   clientsecret: soncrserv
 

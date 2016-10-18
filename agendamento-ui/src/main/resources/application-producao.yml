@@ -1,4 +1,4 @@
-# profile: dev
+# profile: producao
 
 server:
   port: 8181
@@ -13,10 +13,10 @@ zuul:
     resource:
       path: /resource/**
       sensitiveHeaders: Cookie,Set-Cookie,Authorization
-      url: http://localhost:8080/resource-service/
+      url: http://174.142.227.104:8080/resource-service/
     user:
       path: /user/**
-      url: http://localhost:8080/resource-service/user
+      url: http://174.142.227.104:8080/resource-service/user
   debug:
     request: true
   add-proxy-headers: true
@@ -28,13 +28,13 @@ spring:
         secure: false
         path: /,/**/*.html,/app/**,/assets/**
     client:
-      accessTokenUri: http://localhost:9080/uaa/oauth/token
-      userAuthorizationUri: http://localhost:9080/uaa/oauth/authorize
+      accessTokenUri: http://174.142.227.104:9080/uaa/oauth/token
+      userAuthorizationUri: http://174.142.227.104:9080/uaa/oauth/authorize
       clientId: soncui
       clientSecret: soncui
       scope: read, write
     resource:
-      userInfoUri: http://localhost:8080/resource-service/user
+      userInfoUri: http://174.142.227.104:8080/resource-service/user
     thymeleaf:
       cache: false
 
