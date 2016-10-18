@@ -34,3 +34,6 @@ spring:
 logging:
   level:
     org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
+    logging.level.org.hibernate: ERROR
+  file: /tmp/logs/application-auhorization-server.log
